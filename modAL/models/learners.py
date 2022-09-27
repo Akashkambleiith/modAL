@@ -100,6 +100,9 @@ class ActiveLearner(BaseLearner):
             self._fit_to_known(bootstrap=bootstrap, **fit_kwargs)
         else:
             self._fit_on_new(X, y, bootstrap=bootstrap, **fit_kwargs)
+        
+        self.X_training = torch.from_numpy(self.X_training)
+        self.y_training = torch.from_numpy(self.y_training)
 
 
 """
