@@ -93,6 +93,8 @@ class BaseLearner(ABC, BaseEstimator):
             self.y_training = y
         else:
             try:
+                self.X_training = self.X_training.detach().cpu().numpy()
+                self.y_training = self.y_training.detach().cpu().numpy()
                 self.X_training = data_vstack((self.X_training, X))
                 self.y_training = data_vstack((self.y_training, y))
             except ValueError:
